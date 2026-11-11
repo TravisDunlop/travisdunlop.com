@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Secret Santa 🎅</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎁</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@700&family=Nunito:wght@400;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <canvas id="snow" aria-hidden="true"></canvas>
+
+  <div class="lights" aria-hidden="true"></div>
+
+  <main class="card">
+    <div class="tree" aria-hidden="true">🎄</div>
+    <h1>Secret Santa</h1>
+    <p class="sub">Ho ho ho! Sign in with your Google account to find out who you're shopping for.</p>
+
+    <section id="signed-out">
+      <div id="g-signin"></div>
+      <p class="hint">Use the Gmail address Travis has on file for you.</p>
+    </section>
+
+    <section id="signed-in" hidden>
+      <p class="hello">Hi <span id="who"></span>! ✨</p>
+      <p>Santa's elves have wrapped your assignment.</p>
+      <button id="gift" class="gift" aria-label="Unwrap your Secret Santa assignment">
+        <span class="lid"></span><span class="box"></span><span class="bow">🎀</span>
+      </button>
+      <p class="hint">Tap the present to unwrap it. Make sure no one's peeking!</p>
+      <button id="signout" class="link">Not you? Sign out</button>
+    </section>
+
+    <section id="error" hidden>
+      <p class="sad">🥶 <span id="error-msg"></span></p>
+      <button id="retry" class="link">Try a different account</button>
+    </section>
+
+    <p class="note" id="note"></p>
+  </main>
+
+  <div id="modal" class="modal" hidden role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-card">
+      <p id="modal-title" class="modal-kicker">You're Secret Santa for…</p>
+      <p id="recipient" class="recipient"></p>
+      <p class="modal-foot">🤫 Shhh! Keep it a secret.</p>
+      <button id="close" class="btn">Hide it again</button>
+    </div>
+  </div>
+
+  <script src="config.js"></script>
+  <script src="participants.js"></script>
+  <script src="assignments.js"></script>
+  <script src="app.js"></script>
+  <script src="https://accounts.google.com/gsi/client" async defer onload="SecretSanta.initGoogle()"></script>
+</body>
+</html>
